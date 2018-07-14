@@ -1,0 +1,9 @@
+{
+    "apiPrefix": "http://localhost:4000",
+    "serverPort": "4000",
+    "db":{
+        "name": "users",
+        "host": "localhost",
+        "port": 27017
+    }
+}
