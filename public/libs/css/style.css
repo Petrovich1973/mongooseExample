@@ -1,0 +1,141 @@
+.container {
+	min-height: 100vh;
+	overflow: hidden;
+}
+h1 * {
+	display: inline-block;
+	vertical-align: middle;
+}
+.flex-space-between {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.users th, .users td {
+	width: 4%;
+	white-space: nowrap;
+}
+.users th:last-child, .users td:last-child {
+	width: auto;
+}
+.users td.align-middle {
+	vertical-align: middle;
+}
+.users tr td .remove,
+.users tr td .edit,
+.users tr td .save,
+.users tr td .cancel {
+	display: none;
+	cursor: pointer;
+	transition: all 200ms;
+}
+.users tr td .save,
+.users tr td .cancel {
+	display: inline-block;
+}
+.users tr:hover td {
+	background-color: rgba(0, 0, 0, .07);
+}
+.users tr:hover td .remove,
+.users tr:hover td .edit {
+	display: inline-block;
+}
+.users tr td .remove:hover {
+	transform: scale(1.6);
+	color: red;
+}
+.users tr td .edit:hover {
+	transform: scale(1.6);
+	color: orange;	
+}
+.users tr td .save:hover {
+	transform: scale(1.6);
+	color: green;	
+}
+.users tr td .cancel:hover {
+	transform: scale(1.6);
+	color: black;	
+}
+.users tr.edit-row td {
+	position: relative;
+	background-color: rgba(255, 255, 255, .95);
+	z-index: 1000;
+}
+.users tr.edit-row td input,
+.users tr.edit-row td select {
+	width: 160px;
+}
+
+.form {
+	padding: 15px;
+	background-color: #f9f9f9;
+}
+.form.success {
+	background-color: #b7e1bc;
+}
+
+.overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, .6);
+	z-index: 999;
+}
+
+.blur {
+	filter: blur(5px);
+    -ms-filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='50');
+}
+
+.show.flex {
+    display: flex !important;
+    align-items: center;
+}
+
+.pager {
+	margin: 0;
+}
+.pager .btn {
+	min-width: 2.3rem;
+}
+
+.dropdown-item {
+    display: block;
+    width: 100%;
+    padding: .25rem 1.5rem;
+    clear: both;
+    font-weight: 400;
+    color: #212529;
+    text-align: inherit;
+    white-space: nowrap;
+    background-color: transparent;
+    border: 0;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
+.btn-secondary:hover {
+    color: #fff;
+    background-color: #5a6268;
+    border-color: #545b62;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+::-webkit-scrollbar-button {
+    background: transparent;
+}
+::-webkit-scrollbar-track-piece {
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: #ccc;
+}​
