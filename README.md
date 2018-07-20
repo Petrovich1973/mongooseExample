@@ -1,7 +1,9 @@
 # mongooseExample
-Для просмотра:\n
-Установить и запустить mongodb,\n
-npm i,\n
-npm run serverAPI    - start app server services,\n
-npm run build        - bild app client,\n
+Для просмотра:
+...
+Установить и запустить mongodb,
+npm i,
+npm run serverAPI    - start app server services,
+npm run build        - bild app client,
 npm run serverClient - start app server client
+...
