@@ -20,7 +20,7 @@ class NotifyUser extends React.Component {
 	}
 
 	componentDidMount() {
-		this.timeoutId = setTimeout(this.clearMsg, 5000);
+		this.timeoutId = setTimeout(this.clearMsg, 2000);
 	}
 
 	componentWillUnmount() {

@@ -20,8 +20,16 @@ class FormAddUser extends React.Component {
 				name: {value: '', style: '', validate: false},
 				age: {value: '', style: '', validate: false},
 				gender: {value: 'male', style: 'has-success', validate: true}
-			}
+			},
+			offsetHeight: 0
 		};
+		this.idForm = React.createRef();
+	}
+
+	componentDidMount() {
+		this.setState({
+			offsetHeight: this.idForm.current.scrollHeight
+		});
 	}
 
 	handleSubmit(e) {
@@ -59,6 +67,14 @@ class FormAddUser extends React.Component {
 		});
 	}
 
+	formReset() {
+		this.setState({
+			form: {
+				...this.initialState.form			
+			}
+		});
+	}
+
 	validate(name, value) {
 
 		switch(name) {
@@ -91,31 +107,41 @@ class FormAddUser extends React.Component {
 
 	render() {
 
-		const { form } = this.state;
+		const { form, offsetHeight } = this.state;
+		const { isOpen } = this.props;
 		let validate = Object.keys(form).map(m => form[m].validate);
+
+		const style = {
+			overflow: 'hidden',
+			height: isOpen ? offsetHeight + 15 : 0,
+			padding: !isOpen ? '0 15px' : '15px',
+			opacity: isOpen ? 1 : 0
+		}
 
 		return (
 			<form 
 			className={classNames("form", "form-horizontal", {"success": validate.indexOf(false) === -1 ? true : false})} 
-			onSubmit={this.handleSubmit.bind(this)}>
+			onSubmit={this.handleSubmit.bind(this)}
+			ref={this.idForm}
+			style={style}>
 
 				<div className="row">
-					<div className="col-md-8 col-md-offset-2">
+					<div className="col-md-6 offset-md-3">
 
 						<div className="form-group">
-							<div className="col-sm-offset-2 col-sm-10">
+							<div className="offset-md-3 col-sm-9">
 								<h3>Form Add User</h3>
 							</div>
 						</div>						
 
-						<div className={classNames("form-group", "has-feedback", form.name.style)}>
-							<label className="control-label col-sm-2" htmlFor="input1">Name user</label>
-							<div className="col-sm-10">
+						<div className={classNames("form-group row", "has-feedback", form.name.style)}>
+							<label className="col-sm-3 col-form-label text-right my-auto" htmlFor="input1">Name user</label>
+							<div className="col-sm-9">
 								<input 
 								name="name"
 								type="text" 
 								value={form.name.value}
-								className="form-control" 
+								className="form-control form-control-sm" 
 								id="input1"
 								autoComplete="off"
 								onChange={this.handleFormElementInput.bind(this)}/>
@@ -127,14 +153,14 @@ class FormAddUser extends React.Component {
 							</div>
 						</div>
 
-						<div className={classNames("form-group", "has-feedback", form.age.style)}>
-							<label className="control-label col-sm-2" htmlFor="input2">Age user</label>
-							<div className="col-sm-10">
+						<div className={classNames("form-group row", "has-feedback", form.age.style)}>
+							<label className="col-sm-3 col-form-label text-right my-auto" htmlFor="input2">Age user</label>
+							<div className="col-sm-9">
 								<InputMask 
 								name="age"
 								type="text" 
 								value={form.age.value}
-								className="form-control" 
+								className="form-control form-control-sm" 
 								id="input2"
 								autoComplete="off"
 								onChange={this.handleFormElementInput.bind(this)}
@@ -148,13 +174,13 @@ class FormAddUser extends React.Component {
 							</div>
 						</div>
 
-						<div className={classNames("form-group", "has-feedback", form.gender.style)}>
-							<label className="control-label col-sm-2" htmlFor="input2">Gender user</label>
-							<div className="col-sm-10">
+						<div className={classNames("form-group row", "has-feedback", form.gender.style)}>
+							<label className="col-sm-3 col-form-label text-right my-auto" htmlFor="input2">Gender user</label>
+							<div className="col-sm-9">
 								<select 
 								name="gender" 
 								value={form.gender.value}
-								className="form-control"
+								className="form-control form-control-sm"
 								onChange={this.handleFormElementInput.bind(this)}>
 									<option value="male">male</option>
 									<option value="female">female</option>
@@ -162,12 +188,13 @@ class FormAddUser extends React.Component {
 							</div>
 						</div>
 
-						<div className="form-group">
-							<div className="col-sm-offset-2 col-sm-10">
+						<div className="form-group row">
+							<div className="offset-3 col-sm-9">
 								<button 
 								type="submit" 
 								className={classNames("btn", {"btn-success": validate.indexOf(false) === -1 ? true : false})}
-								disabled={ validate.indexOf(false) === -1 ? false : true }><i className="fa fa-plus" /> Add user</button>
+								disabled={ validate.indexOf(false) === -1 ? false : true }><i className="fa fa-save" /> Save user</button>
+								<span className="btn btn-link text-muted btn-sm" onClick={this.formReset.bind(this)}>Reset</span>
 							</div>
 						</div>
 
@@ -178,6 +205,10 @@ class FormAddUser extends React.Component {
 		)
 	}
 }
+
+FormAddUser.defaultProps = {
+	isOpen: false
+};
 
 FormAddUser.displayName = 'FormAddUser';
 

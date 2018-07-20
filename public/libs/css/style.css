@@ -12,9 +12,16 @@ h1 * {
 	align-items: center;
 }
 
+.screenTitle,
+.titleListUser {
+	margin: 1rem 0;
+}
+
+
 .users th, .users td {
 	width: 4%;
 	white-space: nowrap;
+	padding: .4rem .5rem;
 }
 .users th:last-child, .users td:last-child {
 	width: auto;
@@ -35,7 +42,7 @@ h1 * {
 	display: inline-block;
 }
 .users tr:hover td {
-	background-color: rgba(0, 0, 0, .07);
+	background-color: rgba(142, 189, 199, .4);
 }
 .users tr:hover td .remove,
 .users tr:hover td .edit {
@@ -67,9 +74,53 @@ h1 * {
 	width: 160px;
 }
 
+
+.users thead .filterUsers th {
+	background-color: black;
+	color: white;
+	vertical-align: middle;
+}
+.users thead .filterUsers th input {
+    transition: all 1s;
+}
+.users thead .filterUsers th:nth-child(1) {
+	text-align: right;
+}
+.users thead .filterUsers th:nth-child(2) {
+	min-width: 185px;
+}
+.users thead .filterUsers th:nth-child(3) {
+	min-width: 50px;
+}
+.users thead .filterUsers th:nth-child(4) {
+	min-width: 80px;
+}
+
+
+
+.inputNoempty {
+	background-color: #eef19d;
+	color: #000;
+}
+
+.form-control input {
+	outline: none;
+	border: none;
+	min-width: 100%;
+	background-color: transparent;
+}
+
+.btn {
+	cursor: pointer;
+}
 .form {
 	padding: 15px;
 	background-color: #f9f9f9;
+	vertical-align: middle;
+	transition: all 500ms;
+}
+.form-horizontal label {
+	line-height: 1;
 }
 .form.success {
 	background-color: #b7e1bc;
@@ -85,6 +136,10 @@ h1 * {
 	z-index: 999;
 }
 
+.box-transition {
+	transition: all 500ms;
+}
+
 .blur {
 	filter: blur(5px);
     -ms-filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='50');
@@ -96,10 +151,59 @@ h1 * {
 }
 
 .pager {
+    display: flex;
+    align-items: center;
 	margin: 0;
+    position: relative;
+    user-select: none;
+    font-size: 14px;
 }
-.pager .btn {
-	min-width: 2.3rem;
+.pager .total {
+	display: inline-block;
+	margin-right: 1rem;
+	opacity: .5;
+}
+.pager ul {
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.pager ul li {
+    padding: .3rem .2rem;
+    min-width: 1.8rem;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    transition: all 200ms;
+}
+.pager ul li:not(.current):hover, 
+.pager ul li:not(.current):focus {
+    transform: scale(1.2);
+    transform-origin: bottom;
+    background-color: rgba(0, 0, 0, .08);
+}
+.pager ul li.current {
+    color: #fff;
+    background-color: rgba(0, 0, 0, .8);
+    cursor: default;
+}
+.pager ul li.points{
+    padding: 0;
+}
+.pager ul li input {
+    display: block;
+    border: none;
+    width: 2rem;
+    padding: .35rem .2rem;
+    text-align: center;
+    font-size: inherit;
+    color: inherit;
+    background: transparent;
 }
 
 .dropdown-item {
@@ -124,6 +228,12 @@ h1 * {
     color: #fff;
     background-color: #5a6268;
     border-color: #545b62;
+}
+
+.invert {
+	-webkit-filter: invert(1);
+	filter: invert(1);
+	background-color: white;
 }
 
 ::-webkit-scrollbar {

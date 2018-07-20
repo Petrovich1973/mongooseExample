@@ -19,16 +19,34 @@ app.use( bodyParser.json() );
 app.use(cors({ origin: '*' }));
 
 // RESTful api handlers
-app.get('/api/users', nocache, (req, res) => {
-    setTimeout(() => db.listUsers().then(data => res.send(data)), 1000);
+app.get('/api/users/:page', nocache, (req, res) => {
+    setTimeout(() => {
+        db.listUsers(req.params.page, req.query).then(data => res.send(data))
+    }, 1000);
 });
 
 app.post('/api/users', (req, res) => {
-    setTimeout(() => db.createUser(req.body).then(data => res.send(data)), 1000);
+    setTimeout(() => db.createUser(req.body).then(data => {
+        const response = {
+            msg: "User успешно добавлен",
+            success: true,
+            user: data
+        }
+        
+        return res.send(response);
+    }), 1000);
 });
 
 app.put('/api/users/:id', (req, res) => {
-    setTimeout(() => db.editUser(req.params.id, req.body).then(data => res.send(data)), 1000);
+    setTimeout(() => db.editUser(req.params.id, req.body).then(data => {
+        const response = {
+            msg: "User успешно изменен",
+            success: true,
+            user: data
+        }
+        
+        return res.send(response);
+    }), 1000);
 });
 
 app.delete('/api/users/:id', (req, res) => {
@@ -40,11 +58,13 @@ app.delete('/api/users/:id', (req, res) => {
             id: req.params.id
         }
 
-        if(data.result.n === 0) 
+        console.log(data);
+
+        if(data.n === 0) 
         	return res.send({...response, success: false, msg: "Ошибка удаления!"});
 
         return res.send(response);
-    }), 200);
+    }), 2000);
 
 });
 

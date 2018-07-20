@@ -120,7 +120,7 @@ class FormEditUser extends React.Component {
 					<input 
 					name="name"
 					type="text" 
-					className="form-control input-sm" 
+					className="form-control form-control-sm" 
 					autoComplete="off"
 					value={form.name.value}
 					onChange={this.handleFormElementInput.bind(this)} />
@@ -129,7 +129,7 @@ class FormEditUser extends React.Component {
 					<InputMask 
 					name="age"
 					type="text" 
-					className="form-control input-sm" 
+					className="form-control form-control-sm" 
 					autoComplete="off"
 					value={form.age.value}
 					mask="99"
@@ -139,7 +139,7 @@ class FormEditUser extends React.Component {
 				<td className={classNames("align-middle", form.gender.style)}>
 					<select 
 					name="gender"
-					className="form-control input-sm" 
+					className="form-control form-control-sm" 
 					value={form.gender.value}
 					onChange={this.handleFormElementInput.bind(this)}>
 						<option value="male">male</option>

@@ -1,20 +1,20 @@
-const initialState = {    
-    users: [/*{
-        id: 0, 
-        name: 'Vasya', 
-        age: 23, 
-        gender: 'male'
-    },{
-        id: 1, 
-        name: 'Elena', 
-        age: 45, 
-        gender: 'female'
-    },{
-        id: 2, 
-        name: 'Nikolay', 
-        age: 12, 
-        gender: 'male'
-    }*/],
+const initialState = { 
+    total: 0,
+    page: 1,
+    perPage: 10,
+    users: [],
+    filter: {
+        name: '',
+        age: '',
+        gender: ''
+    },
+    usersColumns: {
+        id: true,
+        name: true,
+        age: true,
+        gender: true
+    },
+    invert: false,
     msg: null,
     success: true,
     editMode: false,
@@ -40,7 +40,7 @@ export default function reducer(state = initialState, action) {
         case "UPDATE_USERS": {
             return {
                 ...state,
-                users: action.payload,
+                ...action.payload,
                 waiting: false
             };
         }
@@ -56,6 +56,38 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 users: state.users.filter(f => f.id !== action.payload),
                 waiting: false
+            };
+        }
+        case "FILTER_FIELD": {
+            return {
+                ...state,
+                filter: {
+                    ...state.filter,
+                    ...action.payload
+                }
+            };
+        }
+        case "FILTER_RESET": {
+            return {
+                ...state,
+                filter: {
+                    ...initialState.filter
+                }
+            };
+        }
+        case "CHANGE_FIELD": {
+            return {
+                ...state,
+                ...action.payload
+            };
+        }
+        case "SETTINGS_FIELD": {
+            return {
+                ...state,
+                usersColumns: {
+                    ...state.usersColumns,
+                    ...action.payload
+                }
             };
         }
         case "EDIT_MODE_USER": {
