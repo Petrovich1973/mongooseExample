@@ -49,25 +49,3 @@ class NotifyUser extends React.Component {
 NotifyUser.displayName = 'NotifyUser';
 
 export default NotifyUser;
-		
-		// return (
-		// 	<div className="modal show" role="dialog" onClick={this.clearMsg}>
-		// 		<div className="modal-dialog" role="document">
-		// 			<div className="modal-content">
-		// 				<div className="modal-header">
-		// 					<h5 className="modal-title">Modal title</h5>
-		// 					<button type="button" className="close">
-		// 						<span aria-hidden="true">&times;</span>
-		// 					</button>
-		// 				</div>
-		// 				<div className="modal-body">
-		// 					<p>{msg}</p>
-		// 				</div>
-		// 				<div className="modal-footer">
-		// 					<button type="button" className="btn btn-primary">Save changes</button>
-		// 					<button type="button" className="btn btn-secondary">Close</button>
-		// 				</div>
-		// 			</div>
-		// 		</div>
-		// 	</div>	
-		// )
