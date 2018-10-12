@@ -26,6 +26,7 @@ app.get('/api/users/:page', nocache, (req, res) => {
 });
 
 app.post('/api/users', (req, res) => {
+    console.log('/api/users', req.body);
     setTimeout(() => db.createUser(req.body).then(data => {
         const response = {
             msg: "User успешно добавлен",
